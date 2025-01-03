@@ -19,7 +19,7 @@ const LoginScreen = () => {
   const handleGetOtp = async () => {
     try {
       const response = await fetch(
-        'https://youga-server.onrender.com/api/routes/v1/login/request-otp', 
+        'https://youga-server.onrender.com/api/routes/native/v1/login/request-otp', 
         {
           method: 'POST',
           headers: {
@@ -46,7 +46,7 @@ const LoginScreen = () => {
   const handleOtpSubmit = async () => {
     try {
       const response = await fetch(
-        'https://youga-server.onrender.com/api/routes/v1/login/verify-otp', 
+        'https://youga-server.onrender.com/api/routes/native/v1/login/verify-otp', 
         {
           method: 'POST',
           headers: {
@@ -64,7 +64,7 @@ const LoginScreen = () => {
          await SecureStore.setItemAsync('jwt_token', token);
 
         Alert.alert('Success', 'Login successful!');
-        navigation.replace('Home');
+        navigation.replace('HomeMain');
       } else {
         const error = await response.json();
         Alert.alert('Error', error.message || 'Invalid OTP.');
@@ -77,7 +77,7 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title} class = ''>Welcome Back</Text>
+      <Text style={styles.title} class = 'text-white'>Welcome Back</Text>
       
       {/* Email Input */}
       <Text style={styles.label}>Registered Email</Text>
