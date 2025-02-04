@@ -1,8 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { MaterialIcons,Feather } from "@expo/vector-icons"; 
+// import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomePremium() {
+  
   return (
     <View>
       <View className='ml-[25px] mt-[35px]'><Text className = "text-orange1  text-[35px] font-mono font-[900]">Choose Your Plan</Text></View>
@@ -11,9 +14,19 @@ export default function HomePremium() {
           <View className="ml-[20px] mt-[4px] flex-1">
             <Text className='text-[20px] font-[800]'>Yearly</Text>
           </View>
-          <View className="ml-[5px] mb-[10px] mt-[5px] pt-[3px] pb-[3px] pl-[20px] pr-[20px] flex-1 bg-orange1 rounded-[45]">
+          <LinearGradient
+        // Button Linear Gradient
+        colors={['#F9862D', '#F9862D', '#F9862d','#FECE00']}
+        start={{ x: -1, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={{ borderRadius: 65 }}
+        className='mt-[2px] '>
+          <View className="ml-[5px]  mb-[5px] mt-[5px] pl-[10px] pr-[25px] flex-1 rounded-[45]">
+          
             <Text className='text-white text-center'>Best Value</Text>
+            
           </View>
+          </LinearGradient>
           <View className="flex-1 mt-[5px] ml-[52px]">
             <Text className='text-[17px] line-through'>$120</Text>
           </View>
