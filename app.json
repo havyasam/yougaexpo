@@ -27,19 +27,18 @@
       [
         "expo-font",
         {
-          "custom": {
-            "Inter-Black": "./assets/fonts/SAMAN___.TTF"
-          }
+         
+            "fonts": ["./assets/fonts/SpaceMono-Regular.ttf"]
+          
         }
       ],
       [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+        "expo-splash-screen",{
+          "resizeMode":"contain",
+          "backgroundColor":"#ffffff"
         }
       ],
+     
       "expo-secure-store"
     ],
     "experiments": {
@@ -47,3 +46,5 @@
     }
   }
 }
+
+

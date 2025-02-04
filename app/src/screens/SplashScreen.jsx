@@ -1,30 +1,28 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useUserContext } from '../context/UserContext';
+import { useAuth } from '../context/UserContext';
 
 const SplashScreen = () => {
-  // const [fontsLoaded] = useFonts({
-  //   'SAMAN__': require('./assets/fonts/SAMAN__.TTF'),
-  //   'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
-  // });
   const navigation = useNavigation();
-  const { user } = useUserContext(); // Access user context
+  const { authState } = useAuth(); // Access user authentication state
 
   useEffect(() => {
-    // If the user is logged in, navigate to the Home screen
-    setTimeout(() => {
-      if (user) {
-        navigation.replace('Home');
+    const timer = setTimeout(() => {
+      if (authState.user) {
+        navigation.replace('HomeMain'); // Ensure this matches your navigation structure
       } else {
-        navigation.replace('Login'); // Navigate to Login if no user
+        navigation.replace('Signup'); // Redirect to Signup/Login if user not authenticated
       }
-    }, 2000); // Splash screen duration
-  }, [user, navigation]);
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup timeout
+  }, [authState.user, navigation]);
 
   return (
     <View style={styles.container}>
-      <Text style={{fontFamily:'italic'}}>The yoga life</Text>
+      <Text style={styles.text}>The Yoga Life</Text>
+      <ActivityIndicator size="large" color="#fff" />
     </View>
   );
 };
@@ -34,12 +32,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#00f',
+    backgroundColor: 'black',
   },
   text: {
     fontSize: 24,
-    color: '#fff',
-    fontFamily:'Inter-Black'
+    color: 'white',
+    fontStyle: 'italic',
+    marginBottom: 10,
   },
 });
 
